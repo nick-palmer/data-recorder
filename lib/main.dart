@@ -59,15 +59,6 @@ class _DataVisualizerLineGraphState extends State<DataVisualizerLineGraph> {
     });
   }
 
-  // Open uop the dialog to add a new point
-//  void _openAddDataPointDialog() {
-//    Navigator.of(context).push(new MaterialPageRoute<Null>(
-//        builder: (BuildContext context) {
-//          return new DataPointDialog.add(1.0);
-//        },
-//        fullscreenDialog: true
-//    ));
-//  }
 
   // Open the dialog and return the value asynchronously
   Future _openAddDataPointDialogAsync() async {

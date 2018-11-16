@@ -102,9 +102,9 @@ class DataPointDialogState extends State<DataPointDialog> {
                       setState(() => _dateTime = dateTime),
                 ),
                 new ListTile(
-                  leading: new Icon(Icons.bubble_chart, color: Colors.green[500]),
+                  leading: new Icon(Icons.bubble_chart, color: Colors.green[500], size: 50.0),
                   title: new Padding(padding:
-                    EdgeInsets.symmetric(vertical: 15.0),
+                    EdgeInsets.symmetric(vertical: 24.0),
                     child: new Text(
                       "$_pointValue",
                       textAlign: TextAlign.left,
@@ -112,6 +112,10 @@ class DataPointDialogState extends State<DataPointDialog> {
                     ),
                   ),
                   onTap: () => _showDataPointInput(context),
+                ),
+                new Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
+                  child: new Icon(Icons.equalizer, color: Colors.green[500], size: 200.0),
                 ),
               ],
             )

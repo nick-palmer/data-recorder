@@ -25,12 +25,12 @@ class DateTimeItem extends StatelessWidget {
     return new Column(
       children: <Widget>[
         new ListTile(
-          leading: new Icon(Icons.calendar_today, color: Colors.green[500]),
+          leading: new Icon(Icons.calendar_today, color: Colors.green[500], size: 50.0),
           title:
             new InkWell(
               onTap: (() => _showDatePicker(context)),
               child: new Padding(
-                  padding: new EdgeInsets.symmetric(vertical: 15.0),
+                  padding: new EdgeInsets.symmetric(vertical: 24.0),
                   child: new Text(
                       formatDate(date,[mm, '-', dd, '-', yyyy]),
                       textAlign: TextAlign.left,
@@ -39,11 +39,11 @@ class DateTimeItem extends StatelessWidget {
               ),
             ),
         new ListTile(
-          leading: new Icon(Icons.access_time, color: Colors.green[500]),
+          leading: new Icon(Icons.access_time, color: Colors.green[500], size: 50.0),
           title:new InkWell(
                 onTap: (() => _showTimePicker(context)),
                 child: new Padding(
-                    padding: new EdgeInsets.symmetric(vertical: 15.0),
+                    padding: new EdgeInsets.symmetric(vertical: 24.0),
                     child: new Text(
                         //DateFormat('yyyy-MM-dd – kk:mm').format(time),
                         '${time.hourOfPeriod.toString().padLeft(2, '0')}:'
