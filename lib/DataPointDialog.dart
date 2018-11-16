@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:math';
-import 'package:date_format/date_format.dart';
-import 'package:flutter/material.dart';
 import 'package:data_recorder/DateTimeItem.dart';
+import 'package:flutter/material.dart';
 import 'package:data_recorder/models/TimeSeriesDataPoint.dart';
 
 class DataPointDialog extends StatefulWidget {
@@ -98,18 +96,20 @@ class DataPointDialogState extends State<DataPointDialog> {
             child:
             Column(
               children: <Widget>[
-                new ListTile(
-                  leading: new Icon(Icons.today, color: Colors.grey[500]),
-                  title: new DateTimeItem(
-                    dateTime: _dateTime,
-                    onChanged: (dateTime) =>
-                        setState(() => _dateTime = dateTime),
-                  ),
+                new DateTimeItem(
+                  dateTime: _dateTime,
+                  onChanged: (dateTime) =>
+                      setState(() => _dateTime = dateTime),
                 ),
                 new ListTile(
-                  leading: new Icon(Icons.bubble_chart, color: Colors.grey[500]),
-                  title: new Text(
-                    "$_pointValue",
+                  leading: new Icon(Icons.bubble_chart, color: Colors.green[500]),
+                  title: new Padding(padding:
+                    EdgeInsets.symmetric(vertical: 15.0),
+                    child: new Text(
+                      "$_pointValue",
+                      textAlign: TextAlign.left,
+                      style: new TextStyle(fontSize: 30.0)
+                    ),
                   ),
                   onTap: () => _showDataPointInput(context),
                 ),
@@ -121,64 +121,3 @@ class DataPointDialogState extends State<DataPointDialog> {
   }
 }
 
-class DateTimeItem extends StatelessWidget {
-  DateTimeItem({Key key, DateTime dateTime, @required this.onChanged})
-      : assert(onChanged != null),
-        date = dateTime == null
-            ? new DateTime.now()
-            : new DateTime(dateTime.year, dateTime.month, dateTime.day),
-        time = dateTime == null
-            ? new DateTime.now()
-            : new TimeOfDay(hour: dateTime.hour, minute: dateTime.minute),
-        super(key: key);
-
-  final DateTime date;
-  final TimeOfDay time;
-  final ValueChanged<DateTime> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return new Row(
-      children: <Widget>[
-        new Expanded(
-          child: new InkWell(
-            onTap: (() => _showDatePicker(context)),
-            child: new Padding(
-                padding: new EdgeInsets.symmetric(vertical: 8.0),
-                child: new Text(formatDate(date,[mm, '-', dd, '-', yyyy]))),
-          ),
-        ),
-        new InkWell(
-          onTap: (() => _showTimePicker(context)),
-          child: new Padding(
-              padding: new EdgeInsets.symmetric(vertical: 8.0),
-              child: new Text('${time.hourOfPeriod}:${time.minute}')),
-        ),
-      ],
-    );
-  }
-
-  Future _showDatePicker(BuildContext context) async {
-    DateTime dateTimePicked = await showDatePicker(
-        context: context,
-        initialDate: date,
-        firstDate: date.subtract(const Duration(days: 20000)),
-        lastDate: date.add(const Duration(days: 20000))
-    );
-
-    if (dateTimePicked != null) {
-      onChanged(new DateTime(dateTimePicked.year, dateTimePicked.month,
-          dateTimePicked.day, time.hour, time.minute));
-    }
-  }
-
-  Future _showTimePicker(BuildContext context) async {
-    TimeOfDay timeOfDay =
-    await showTimePicker(context: context, initialTime: time);
-
-    if (timeOfDay != null) {
-      onChanged(new DateTime(
-          date.year, date.month, date.day, timeOfDay.hour, timeOfDay.minute));
-    }
-  }
-}

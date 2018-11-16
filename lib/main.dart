@@ -74,7 +74,7 @@ class _DataVisualizerLineGraphState extends State<DataVisualizerLineGraph> {
     TimeSeriesDataPoint save = await Navigator.of(context).push(
         new MaterialPageRoute<TimeSeriesDataPoint>(
         builder: (BuildContext context) {
-          return new DataPointDialog.add(1.0);
+          return new DataPointDialog.add(0.0);
         },
         fullscreenDialog: true
     ));
