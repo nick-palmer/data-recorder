@@ -110,16 +110,51 @@ class _DataVisualizerLineGraphState extends State<DataVisualizerLineGraph> {
 
     // Initialize the list of data points
     if(dataPoints == null || dataPoints.length == 0) {
-      dataPoints.add(new TimeSeriesDataPoint(new DateTime.now(), 0.0));
+      return new Container(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 12.0, 0.0),
+                  child: new Text(
+                    "Hey man",
+                    style: new TextStyle(fontSize: 24.0, fontFamily: 'Raleway'),
+                  ),
+                ),
+                new Icon(Icons.announcement, color: Colors.green),
+              ],
+            ),
+            new Padding(
+              padding: new EdgeInsets.all(32.0),
+              child: new SizedBox(
+                height: 100.0,
+                width: 10000.0,
+                child: new Text(
+                    "Enter some data, bruh!",
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                )
+              ),
+            ),
+          ],
+        ),
+      );
     }
+
+    // Sort the data points by time
+    dataPoints.sort((a, b) => a.time.compareTo(b.time));
 
     // Define the series
     var series = [
       new charts.Series<TimeSeriesDataPoint, DateTime>(
         id: 'Date Value',
         colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
-        domainFn: (TimeSeriesDataPoint coinsPrice, _) => coinsPrice.time,
-        measureFn: (TimeSeriesDataPoint coinsPrice, _) => coinsPrice.value,
+        domainFn: (TimeSeriesDataPoint dataPoint, _) => dataPoint.time,
+        measureFn: (TimeSeriesDataPoint dataPoint, _) => dataPoint.value,
         data: dataPoints,
       ),
     ];
@@ -130,6 +165,7 @@ class _DataVisualizerLineGraphState extends State<DataVisualizerLineGraph> {
       animate: true,
     );
 
+    
     // Return the container with chart and data
     return new Container(
       child: new Column(

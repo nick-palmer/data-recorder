@@ -107,12 +107,7 @@ class DataPointDialogState extends State<DataPointDialog> {
                   ),
                 ),
                 new ListTile(
-//                  leading: new Image.asset(
-//                    "assets/scale-bathroom.png",
-//                    color: Colors.grey[500],
-//                    height: 24.0,
-//                    width: 24.0,
-//                  ),
+                  leading: new Icon(Icons.bubble_chart, color: Colors.grey[500]),
                   title: new Text(
                     "$_pointValue",
                   ),
