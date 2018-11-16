@@ -163,7 +163,8 @@ class DateTimeItem extends StatelessWidget {
         context: context,
         initialDate: date,
         firstDate: date.subtract(const Duration(days: 20000)),
-        lastDate: new DateTime.now());
+        lastDate: date.add(const Duration(days: 20000))
+    );
 
     if (dateTimePicked != null) {
       onChanged(new DateTime(dateTimePicked.year, dateTimePicked.month,

@@ -121,7 +121,7 @@ class _DataVisualizerLineGraphState extends State<DataVisualizerLineGraph> {
                   padding: EdgeInsets.fromLTRB(0.0, 0.0, 12.0, 0.0),
                   child: new Text(
                     "Hey man",
-                    style: new TextStyle(fontSize: 24.0, fontFamily: 'Raleway'),
+                    style: new TextStyle(fontSize: 24.0),
                   ),
                 ),
                 new Icon(Icons.announcement, color: Colors.green),
@@ -171,6 +171,10 @@ class _DataVisualizerLineGraphState extends State<DataVisualizerLineGraph> {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          new Text(
+          "Nice data, champ!",
+            style: new TextStyle(fontSize: 24.0),
+          ),
           new Padding(
             padding: new EdgeInsets.all(32.0),
             child: new SizedBox(
