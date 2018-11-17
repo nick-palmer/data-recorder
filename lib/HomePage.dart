@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:data_recorder/DataPointGraphPage.dart';
 
@@ -23,22 +24,39 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               new Center(
                 child: new Text(
-                "Data\n    Recorder",
-                style: new TextStyle(
+                  "Data\n    Recorder",
+                  style: new TextStyle(
                     fontFamily: "Orbitron",
-                    fontSize: 50.0
-                ),
+                    fontSize: 50.0,
+                    color: Colors.black87,
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(3.0, 3.0),
+                        blurRadius: 3.0,
+                        color: Color.fromRGBO(240, 255, 240, 100),
+                      ),
+                      Shadow(
+                        offset: Offset(3.0, 3.0),
+                        blurRadius: 8.0,
+                        color: Color.fromRGBO(110, 110, 110, 100),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               new Center(
-                child: new RaisedButton(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-                  color: Colors.lightGreenAccent,
+                child: new OutlineButton(
+                  padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 45.0),
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0)
+                  ),
+                  color: Colors.green,
+                  borderSide: BorderSide(width: 3.0,color: Colors.black),
                   child: new Text(
                     "Start",
                     style: new TextStyle(
-                        fontSize: 36.0,
-                        color: Colors.green
+                        fontSize: 28.0,
+                        color: Colors.black
                     ),
                   ),
                   onPressed: () {
