@@ -3,26 +3,8 @@ import 'dart:math';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:data_recorder/DataPointDialog.dart';
-import 'package:data_recorder/HomePage.dart';
 import 'package:data_recorder/models/TimeSeriesDataPoint.dart';
 
-
-void main() => runApp(new DataRecorderApp());
-
-
-class DataRecorderApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Weight Tracker',
-      theme: new ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: new HomePage(title: 'Data Recorder'),
-    );
-  }
-
-}
 
 
 class LineChart extends StatelessWidget {
@@ -34,7 +16,7 @@ class LineChart extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: new DataVisualizerLineGraph(title: 'Record some data!'),
+      home: new DataVisualizerLineGraph(title: 'Record some data!'), // <- Call this from the home page...
     );
   }
 
